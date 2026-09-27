@@ -4,21 +4,19 @@ using System.Reflection.Emit;
 using BeatSaberMarkupLanguage.Components;
 using HarmonyLib;
 using TMPro;
-using UnityEngine;
 
 namespace BeatSaberMarkupLanguage.Harmony_Patches
 {
-    /// <summary>
-    /// This patch copies the new <see cref="Material.enabledKeywords"/> since the version of TextMesh Pro that Beat Saber uses doesn't support it (yet).
-    /// </summary>
-    [HarmonyPatch(typeof(TMP_Text), "CreateMaterialInstance")]
-    internal static class TMP_Text_CreateMaterialInstance
-    {
-        public static void Postfix(Material source, ref Material __result)
-        {
-            __result.enabledKeywords = source.enabledKeywords;
-        }
-    }
+    // TMP_Text_CreateMaterialInstance removed as of the 1.45.1 port. It copied
+    // Material.enabledKeywords onto the result because "the version of TextMesh Pro that
+    // Beat Saber uses doesn't support it (yet)" (see git history). As of 1.45.1, Unity's own
+    // bundled TextMeshPro (now built into the engine rather than a separate package) already
+    // copies keywords itself -- decompiled TMP_Text.CreateMaterialInstance:
+    // `new Material(source) { shaderKeywords = source.shaderKeywords }`. Re-applying keywords
+    // afterward through the newer enabledKeywords API on top of an already-correct material
+    // is redundant at best, and is the likely cause of a garbled/smudged-texture rendering bug
+    // seen on SongCore's "X songs loaded" overlay (and other CurvedTextMeshPro-based text)
+    // after porting to 1.45.1.
 
     [HarmonyPatch(typeof(TMP_Text), "CalculatePreferredValues")]
     internal static class TMP_Text_CalculatePreferredValues
