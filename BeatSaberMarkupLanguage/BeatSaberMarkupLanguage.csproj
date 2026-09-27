@@ -74,9 +74,8 @@
       <Private>False</Private>
       <Publicize>True</Publicize>
     </Reference>
-    <Reference Include="Interactable">
-      <Private>False</Private>
-    </Reference>
+    <!-- Interactable.dll no longer exists as of 1.45.1: HMUI.Interactable and friends were
+         merged into HMUI.dll, which is already referenced above. -->
     <Reference Include="Main">
       <Private>False</Private>
       <Publicize>True</Publicize>
