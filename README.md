@@ -34,3 +34,21 @@ If you plan on adding any new dependencies which are located in the Beat Saber d
 
 ### GitHub Packages
 This project currently uses [a fork](https://github.com/nicoco007/BepInEx.AssemblyPublicizer) of [BepInEx.AssemblyPublicizer](https://github.com/BepInEx/BepInEx.AssemblyPublicizer). You will need to add `https://nuget.pkg.github.com/nicoco007/index.json` as a package source for NuGet to download it. Take a look at GitHub's [Working with the NuGet Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry#authenticating-to-github-packages) for details.
+
+
+## A note on how this fork was made
+
+I'm not a professional programmer. I do some Android development, but Unity/Harmony
+modding is new to me, so I know just enough to spot when something has gone wrong and
+roughly how to fix it.
+
+This fork's changes were made with AI assistance. I direct the work, review what it
+produces, and test everything on real hardware before it goes into a release. I'm
+sharing this because I'd rather be upfront about it than have you wonder. This
+disclaimer covers this fork's own changes only — the original mod is the work of its
+original author(s).
+
+I understand not everyone is comfortable with AI-assisted code, and that's a fair
+position; a lot of people here have spent years building real expertise. If you'd
+rather check things yourself, everything is open and the commits are small. Bug
+reports, reviews and corrections are very welcome, and I'll fix what I get wrong.
